@@ -1,0 +1,43 @@
+Arguments: 
+  /Users/dank/.nvm/versions/node/v18.17.0/bin/node /Users/dank/.yarn/bin/yarn.js add --dev hardhat
+
+PATH: 
+  /Users/dank/.nvm/versions/node/v18.17.0/bin:/Users/dank/.yarn/bin:/Users/dank/.config/yarn/global/node_modules/.bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/Applications/Postgres.app/Contents/Versions/latest/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Users/dank/.cargo/bin:/Users/dank/.foundry/bin
+
+Yarn version: 
+  1.22.19
+
+Node version: 
+  18.17.0
+
+Platform: 
+  darwin arm64
+
+Trace: 
+  Error: https://homagames.jfrog.io/artifactory/api/npm/npm-virtual/hardhat: not_found
+      at params.callback [as _callback] (/Users/dank/.yarn/lib/cli.js:66145:18)
+      at self.callback (/Users/dank/.yarn/lib/cli.js:140890:22)
+      at Request.emit (node:events:514:28)
+      at Request.<anonymous> (/Users/dank/.yarn/lib/cli.js:141862:10)
+      at Request.emit (node:events:514:28)
+      at IncomingMessage.<anonymous> (/Users/dank/.yarn/lib/cli.js:141784:12)
+      at Object.onceWrapper (node:events:628:28)
+      at IncomingMessage.emit (node:events:526:35)
+      at endReadableNT (node:internal/streams/readable:1359:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+
+npm manifest: 
+  {
+    "name": "quiztopia-contracts",
+    "version": "1.0.0",
+    "main": "index.js",
+    "repository": "git@github.com-personal:lcubestudios/quiztopia-contracts.git",
+    "author": "Dan <dkazenoff@gmail.com>",
+    "license": "MIT"
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
