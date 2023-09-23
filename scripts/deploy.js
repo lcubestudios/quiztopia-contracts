@@ -1,32 +1,35 @@
-// We require the Hardhat Runtime Environment explicitly here. This is optional
-// but useful for running the script in a standalone fashion through `node <script>`.
-//
-// You can also run a script with `npx hardhat run <script>`. If you do that, Hardhat
-// will compile your contracts, add the Hardhat Runtime Environment's members to the
-// global scope, and execute the script.
-const hre = require("hardhat");
+// import { hexStripZeros } from "ethers/lib/utils";
+// const ethers = require("hardhat")
+const hre = require("hardhat")
+
+
 
 async function main() {
-  const currentTimestampInSeconds = Math.round(Date.now() / 1000);
-  const unlockTime = currentTimestampInSeconds + 60;
-
-  const lockedAmount = hre.ethers.parseEther("0.001");
-
-  const lock = await hre.ethers.deployContract("Lock", [unlockTime], {
-    value: lockedAmount,
-  });
-
-  await lock.waitForDeployment();
-
-  console.log(
-    `Lock with ${ethers.formatEther(
-      lockedAmount
-    )}ETH and unlock timestamp ${unlockTime} deployed to ${lock.target}`
+  const Quiz = await hre.ethers.getContractFactory("TriviaQuiz")
+  console.log("deploying...")
+  const QuizDeployed = await Quiz.deploy(
+    "0x10fa54a7adb4b4cb5b19989d3d1a9a75e23aabac75bb5b5942fab9a87838caf8", 
+    3,  {
+    value: ethers.utils.parseEther("0.0875") // Specify the amount of Ether you want to send
+    }
   );
+  console.log("line 10")////QuizDeployed.address)
+  // console.log("QuizDeployed",QuizDeployed,"\n\n")
+  await QuizDeployed.waitForDeployment();
+  console.log("Line 14")
+  await QuizDeployed.deploy; //ed
+  console.log("The latest quiz contract was deployed", QuizDeployed.target)
+  console.log("Deployed by ",QuizDeployed.runner.address)
+///////
+  // const [deployer] = await ethers.getSigners();
+
+  // console.log("Deploying contracts with the account:", deployer.address);
+  // const QUIZ = await ethers.deployContract("QuizDeployed");
+  // console.log("Token address:", await QUIZ.getAddress());
+
+
 }
 
-// We recommend this pattern to be able to use async/await everywhere
-// and properly handle errors.
 main().catch((error) => {
   console.error(error);
   process.exitCode = 1;
