@@ -1,21 +1,33 @@
+// import { hexStripZeros } from "ethers/lib/utils";
 const { ethers } = require("hardhat")
 const hre = require("hardhat")
+
+
 
 async function main() {
   const Quiz = await hre.ethers.getContractFactory("TriviaQuiz")
   console.log("deploying...")
   const QuizDeployed = await Quiz.deploy(
-    "0xf1885eda54b7a053318cd41e2093220dab15d65381b1157a3633a83bfd5c9239", 
+    "0x64e604787cbf194841e7b68d7cd28786f6c9a0a3ab9f8b0a0e87cb4387ab0107", 
     3,  {
-    value: ethers.parseEther("0.0175") // Specify the amount of Ether you want to send
+    value: ethers.parseEther("0.0875") // Specify the amount of Ether you want to send
     }
   );
   console.log("line 10")////QuizDeployed.address)
+  // console.log("QuizDeployed",QuizDeployed,"\n\n")
   await QuizDeployed.waitForDeployment();
   console.log("Line 14")
   await QuizDeployed.deploy; //ed
   console.log("The latest quiz contract was deployed", QuizDeployed.target)
   console.log("Deployed by ",QuizDeployed.runner.address)
+///////
+  // const [deployer] = await ethers.getSigners();
+
+  // console.log("Deploying contracts with the account:", deployer.address);
+  // const QUIZ = await ethers.deployContract("QuizDeployed");
+  // console.log("Token address:", await QUIZ.getAddress());
+
+
 }
 
 main().catch((error) => {
